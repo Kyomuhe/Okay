@@ -1,22 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import dep1 from "../../assets/dep1.PNG";
-import dep18 from "../../assets/dep18.PNG";
+import dep from "../../assets/dep.PNG";
 import support from "../../assets/support.png";
-import { Brain, HeartPlus, Frown, HeartCrack, Scale ,HeartHandshake, CheckCircle} from "lucide-react";
+import { Brain, HeartPlus, Frown, HeartCrack, Scale, HeartHandshake, CheckCircle } from "lucide-react";
 
 const Home = () => {
+    const navigate = useNavigate();
     return (
-        <div className="min-h-screen flex flex-col bg-gray-100 text-gray-800">
+        <div className="min-h-screen flex flex-col bg-blue-100 text-gray-800">
             <header className="bg-white shadow-sm border-b border-gray-300">
                 <div className="flex justify-between items-center px-6 py-4">
                     <h1 className="text-3xl font-serif">It's Okay <span className="text-gray-500">App</span></h1>
                     <nav className="flex gap-4 px-3 py-2">
-                        <Link className="text-gray-700 hover:text-blue-500 transition-all">
+                        <p
+                            onClick={() => { navigate("signup") }}
+                            className="text-gray-700 hover:text-blue-500 transition-all cursor-pointer">
                             Sign Up
-                        </Link>
-                        <Link className="text-gray-700 hover:text-blue-500 transition-all">
+                        </p>
+                        <p
+                            onClick={() => { navigate("login") }}
+                            className="text-gray-700 hover:text-blue-500 transition-all cursor-pointer">
                             Log In
-                        </Link>
+                        </p>
                         <Link className="text-gray-700 hover:text-blue-500 transition-all">
                             Read Stories
                         </Link>
@@ -98,7 +103,7 @@ const Home = () => {
             <div className="flex flex-col lg:flex-row">
                 <div className="flex flex-col items-center justify-center my-8">
                     <img
-                        src={dep18}
+                        src={dep}
                         alt="Description of dep18"
                         className="max-w-full h-auto"
                         style={{
@@ -158,7 +163,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="px-6 py-16 lg:py-20 bg-white">
+            <section className="px-6 py-16 lg:py-20">
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
                     <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg">
                         <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-gray-800">
@@ -169,23 +174,23 @@ const Home = () => {
                         </p>
                         <ul className="space-y-3 text-base lg:text-lg text-gray-700">
                             <li className="flex items-start">
-                                <span className="text-blue-600 mr-3 text-xl"> <CheckCircle/></span>
+                                <span className="text-blue-600 mr-3 text-xl"> <CheckCircle /></span>
                                 Practice mindfulness or meditation to reduce stress.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle/></span>
+                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle /></span>
                                 Engage in regular physical activity to boost mood.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle/></span>
+                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle /></span>
                                 Maintain a balanced diet and prioritize sleep.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle/></span>
+                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle /></span>
                                 Stay connected with friends and loved ones.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle/></span>
+                                <span className="text-blue-600 mr-3 text-xl"><CheckCircle /></span>
                                 Set realistic goals and celebrate small achievements.
                             </li>
                         </ul>
@@ -203,23 +208,23 @@ const Home = () => {
                         </p>
                         <ul className="space-y-3 text-base lg:text-lg text-gray-700">
                             <li className="flex items-start">
-                                <span className="text-purple-600 mr-3 text-xl"> <HeartHandshake/></span>
+                                <span className="text-purple-600 mr-3 text-xl"> <HeartHandshake /></span>
                                 Listen without judgment and show empathy.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake/></span>
+                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake /></span>
                                 Encourage them to seek professional help.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake/></span>
+                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake /></span>
                                 Educate yourself about their condition to understand their experiences.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake/></span>
+                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake /></span>
                                 Offer practical help, such as accompanying them to appointments.
                             </li>
                             <li className="flex items-start">
-                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake/></span>
+                                <span className="text-purple-600 mr-3 text-xl"><HeartHandshake /></span>
                                 Take care of your own mental health to stay supportive.
                             </li>
                         </ul>
