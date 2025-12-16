@@ -22,9 +22,9 @@ const Home = () => {
                             className="text-gray-700 hover:text-blue-500 transition-all cursor-pointer">
                             Log In
                         </p>
-                        <Link className="text-gray-700 hover:text-blue-500 transition-all">
+                        {/* <Link className="text-gray-700 hover:text-blue-500 transition-all">
                             Read Stories
-                        </Link>
+                        </Link> */}
                     </nav>
                 </div>
             </header>

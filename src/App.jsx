@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Normal from "./components/Auth/Normal";
 import HideId from "./components/Auth/HideId";
 import DontHide from "./components/Auth/DontHide";
+import Main from "./components/LoggedIn/Main";
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path = "/normal" element = {<Normal/>}/>
         <Route path = "/hide" element = {<HideId/>}/>
         <Route path = "/dont" element = {<DontHide/>}/>
+        <Route path =  "/main" element = {<Main/>}/>
 
       </Routes>
     </BrowserRouter>
