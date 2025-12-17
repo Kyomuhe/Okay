@@ -1,7 +1,7 @@
 import { Heart, MessageCircleMore ,Bookmark} from "lucide-react";
 const PostCard = ({ post }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-4 max-w-2xl">
+    <div className=" bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4 max-w-2xl ">
       <div className="flex items-center mb-3">
         <img 
           src={post.profileImage} 

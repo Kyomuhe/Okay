@@ -7,6 +7,7 @@ import Normal from "./components/Auth/Normal";
 import HideId from "./components/Auth/HideId";
 import DontHide from "./components/Auth/DontHide";
 import Main from "./components/LoggedIn/Main";
+import CreatePostPage from "./components/LoggedIn/CreatePost";
 const App = () => {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ const App = () => {
         <Route path = "/hide" element = {<HideId/>}/>
         <Route path = "/dont" element = {<DontHide/>}/>
         <Route path =  "/main" element = {<Main/>}/>
+        <Route path = "/create" element ={<CreatePostPage/>}/>
 
       </Routes>
     </BrowserRouter>
