@@ -8,19 +8,21 @@ import HideId from "./components/Auth/HideId";
 import DontHide from "./components/Auth/DontHide";
 import Main from "./components/LoggedIn/Main";
 import CreatePostPage from "./components/LoggedIn/CreatePost";
+import { Toaster } from "sonner";
 const App = () => {
   return (
     <BrowserRouter>
+      <Toaster />
       <Routes>
-        <Route path ="/" element = {<Home/>}/>
-        <Route path ="/login" element ={<Login/>}/>
-        <Route path ="/signup" element = {<SignUp/>}/>
-        <Route path ="/prof" element = {<Prof/>}/>
-        <Route path = "/normal" element = {<Normal/>}/>
-        <Route path = "/hide" element = {<HideId/>}/>
-        <Route path = "/dont" element = {<DontHide/>}/>
-        <Route path =  "/main" element = {<Main/>}/>
-        <Route path = "/create" element ={<CreatePostPage/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/prof" element={<Prof />} />
+        <Route path="/normal" element={<Normal />} />
+        <Route path="/hide" element={<HideId />} />
+        <Route path="/dont" element={<DontHide />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/create" element={<CreatePostPage />} />
 
       </Routes>
     </BrowserRouter>

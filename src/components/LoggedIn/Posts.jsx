@@ -37,7 +37,7 @@ const Posts = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
+    <div className="min-h-screen py-8 px-4">
       <div className="max-w-2xl mx-auto">
         {posts.map(post => (
           <PostCard key={post.id} post={post} />

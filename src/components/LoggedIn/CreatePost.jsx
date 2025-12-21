@@ -49,8 +49,7 @@ const CreatePostPage = () => {
                             U
                         </div>
                         <div className="ml-3">
-                            <h3 className="font-medium text-gray-900">Your Name</h3>
-                            <p className="text-sm text-gray-500">Public post</p>
+                            <h3 className="font-medium text-gray-900">userName</h3>
                         </div>
                     </div>
 
@@ -84,7 +83,7 @@ const CreatePostPage = () => {
                         </div>
                     )}
 
-                    <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+                    <div className="flex items-center justify-between pt-6 ">
                         <div className="flex gap-2">
                             <label className="cursor-pointer px-4 py-2 border border-gray-300 hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-2">
                                 <Image className="w-5 h-5 text-gray-600" />
@@ -112,7 +111,7 @@ const CreatePostPage = () => {
                 </div>
 
                 <div className="mt-6 bg-blue-50 border border-blue-100 rounded-lg p-6">
-                    <h3 className="font-medium text-gray-900 mb-3">Community Guidelines</h3>
+                    <h3 className="font-medium text-[#1E40AF] mb-3">Community Guidelines</h3>
                     <ul className="text-sm text-gray-700 space-y-2">
                         <li className="flex items-start">
                             <span className="text-blue-500 mr-2">•</span>
