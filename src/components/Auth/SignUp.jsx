@@ -1,19 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import dep18 from '../../assets/dep1.png';
+import { setAccountType } from '../../store/Register';
+import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
-    const [accountType, setAccountType] = useState('');
+    const dispatch = useDispatch();
+    // const data = useSelector((state)=> state.register)
+
+    const [accountType, setAccount] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if (accountType === 'professional') {
+        if (accountType === 'ProfessionalUser') {
+            dispatch(setAccountType(accountType))
             navigate('/prof'); 
             return;
         } 
-        if (accountType === 'normal') {
+        if (accountType === 'NormalUser') {
+            dispatch(setAccountType(accountType))
             navigate('/normal'); 
             return;
         } 
@@ -35,9 +42,9 @@ const SignUp = () => {
                         <input
                             type="radio"
                             name="accountType"
-                            value="professional"
-                            checked={accountType === 'professional'}
-                            onChange={(e) => setAccountType(e.target.value)}
+                            value="ProfessionalUser"
+                            checked={accountType === 'ProfessionalUser'}
+                            onChange={(e) => setAccount(e.target.value)}
                         />
                         <span>Professional Account</span>
                     </div>
@@ -45,9 +52,9 @@ const SignUp = () => {
                         <input
                             type="radio"
                             name="accountType"
-                            value="normal"
-                            checked={accountType === 'normal'}
-                            onChange={(e) => setAccountType(e.target.value)}
+                            value="NormalUser"
+                            checked={accountType === 'NormalUser'}
+                            onChange={(e) => setAccount(e.target.value)}
                         />
                         <span>Normal Account</span>
                     </div>

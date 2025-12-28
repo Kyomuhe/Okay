@@ -9,8 +9,11 @@ import DontHide from "./components/Auth/DontHide";
 import Main from "./components/LoggedIn/Main";
 import CreatePostPage from "./components/LoggedIn/CreatePost";
 import { Toaster } from "sonner";
+import { Provider } from "react-redux";
+import {store } from "./store/store";
 const App = () => {
   return (
+    <Provider store={store }>
     <BrowserRouter>
       <Toaster />
       <Routes>
@@ -26,6 +29,7 @@ const App = () => {
 
       </Routes>
     </BrowserRouter>
+    </Provider>
 
   )
 }
