@@ -1,15 +1,18 @@
 import profile from '../../assets/profile.png'
 import { Bell } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'; 
+import logo from '../../assets/logo.png';
 
 const Header = () => {
     const navigate = useNavigate();
     return (
         <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
             <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
-                <h1 className="text-2xl md:text-3xl font-serif">
+                                    <img src={logo} alt="It's Okay App Logo" className="h-12 w-auto" />
+                
+                {/* <h1 className="text-2xl md:text-3xl font-serif">
                     It's Okay <span className="text-gray-500">App</span>
-                </h1>
+                </h1> */}
 
                 <div className="flex items-center gap-3 md:gap-4">
                     <button 

@@ -3,6 +3,7 @@ import dep1 from "../../assets/dep1.PNG";
 import dep from "../../assets/dep.PNG";
 import support from "../../assets/support.png";
 import { Brain, HeartPlus, Frown, HeartCrack, Scale, HeartHandshake, CheckCircle } from "lucide-react";
+import logo from '../../assets/logo.png';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -10,7 +11,8 @@ const Home = () => {
         <div className="min-h-screen flex flex-col bg-blue-100 text-gray-800">
             <header className="bg-white shadow-sm border-b border-gray-300">
                 <div className="flex justify-between items-center px-6 py-4">
-                    <h1 className="text-3xl font-serif">It's Okay <span className="text-gray-500">App</span></h1>
+                    <img src={logo} alt="It's Okay App Logo" className="h-12 w-auto" />
+                    {/* <h1 className="text-3xl font-serif">It's Okay <span className="text-gray-500">App</span></h1> */}
                     <nav className="flex gap-4 px-3 py-2">
                         <p
                             onClick={() => { navigate("signup") }}
@@ -22,9 +24,9 @@ const Home = () => {
                             className="text-gray-700 hover:text-blue-500 transition-all cursor-pointer">
                             Log In
                         </p>
-                        {/* <Link className="text-gray-700 hover:text-blue-500 transition-all">
+                        <Link className="text-gray-700 hover:text-blue-500 transition-all">
                             Read Stories
-                        </Link> */}
+                        </Link>
                     </nav>
                 </div>
             </header>
