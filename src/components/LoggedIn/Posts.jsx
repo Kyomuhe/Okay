@@ -1,40 +1,44 @@
 import PostCard from "./PostCard";
-import profile from '../../assets/profile.png'
-import image from '../../assets/login.png'
-const Posts = () => {
-  const posts = [
-    {
-      id: 1,
-      username: "Mike Chen",
-      profileImage: profile,
-      timestamp: "5 hours ago",
-      body: "Excited to announce that I've just launched my new web development portfolio! It's been months of hard work, but I'm so proud of how it turned out. Check it out and let me know what you think! 🚀",
-      image: null,
-      likes: 89,
-      comments: 12
-    },
+// import profile from '../../assets/profile.png'
+// import image from '../../assets/login.png'
+import { useState, useEffect } from "react";
+import { makeAuthenticatedRequest, showToast } from "../../Utils/util";
 
-    {
-      id: 2,
-      username: "Sarah Johnson",
-      profileImage: profile,
-      timestamp: "2 hours ago",
-      body: "Just finished an amazing hike in the mountains! The view from the top was absolutely breathtaking. Nature really has a way of putting things in perspective. 🏔️",
-      image: image,
-      likes: 124,
-      comments: 18
-    },
-    {
-      id: 3,
-      username: "Mike Chen",
-      profileImage: profile,
-      timestamp: "5 hours ago",
-      body: "Excited to announce that I've just launched my new web development portfolio! It's been months of hard work, but I'm so proud of how it turned out. Check it out and let me know what you think! 🚀",
-      image: null,
-      likes: 89,
-      comments: 12
+const Posts = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const displayPosts = async() => {
+      try {
+        setLoading(true);
+        const response = await makeAuthenticatedRequest("displayAllPosts", "Posts", {});
+        
+        if (response.returnCode !== 0) {
+          showToast(response.returnMessage);
+          return;
+        }
+        
+        const retrievedPosts = (response?.returnObject || []).reverse();
+        console.log('retrievedPosts', retrievedPosts);
+        setPosts(retrievedPosts);
+      } catch (error) {
+        showToast(error.message, 'error');
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+
+    displayPosts();
+  }, []); // Empty dependency array - runs once on mount
+
+  if (loading) {
+    return (
+      <div className="min-h-screen py-8 px-4 flex items-center justify-center">
+        <p>Loading posts...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen py-8 px-4">

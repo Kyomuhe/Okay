@@ -29,12 +29,40 @@ export const makeRequest = async (ACTION, SERVICE, data) => {
         };
         const response = await axios.post(url, payload, config)
         return response.data;
-    }catch(error){
+    } catch (error) {
         console.error("An error occured while making request")
-    if(error.response){
-        throw error.response.data || error;
-    }else{
-        throw new Error(error.message)
+        if (error.response) {
+            throw error.response.data || error;
+        } else {
+            throw new Error(error.message)
+        }
     }
+}
+export const getToken = () => {
+    return localStorage.getItem('accessToken');
+}
+
+export const makeAuthenticatedRequest = async (ACTION, SERVICE, data) => {
+    const token = getToken();
+    try {
+        let url = ServerUrl
+        const payload ={ACTION, SERVICE, ...data};
+        let config ={
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${token}`
+            }
+        };
+        const response = await axios.post(url,payload,config)
+        console.log("request was successful");
+        return response.data;
+
+    } catch (error) {
+        console.error("An error occured while making a request")
+        if (error.response) {
+            throw error.response.data || error;
+        } else {
+            throw new Error(error.message)
+        }
     }
 }
