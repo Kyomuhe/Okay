@@ -24,9 +24,11 @@ const Home = () => {
                             className="text-gray-700 hover:text-blue-500 transition-all cursor-pointer">
                             Log In
                         </p>
-                        <Link className="text-gray-700 hover:text-blue-500 transition-all">
+                        <p 
+                        onClick = {()=>{ navigate("main")}}
+                        className="text-gray-700 hover:text-blue-500 transition-all">
                             Read Stories
-                        </Link>
+                        </p>
                     </nav>
                 </div>
             </header>
@@ -43,7 +45,9 @@ const Home = () => {
                     <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                         We understand that life can be tough. Here at <em>It's Okay App</em>, you'll find a community of people who care and are ready to listen.
                     </p>
-                    <button className="bg-blue-500 rounded p-2 shadow-md text-white text-lg hover:bg-blue-400">
+                    <button
+                    onClick ={()=>{navigate("main")}} 
+                    className="bg-blue-500 rounded p-2 shadow-md text-white text-lg hover:bg-blue-400">
                         Read Stories
                     </button>
                 </div>

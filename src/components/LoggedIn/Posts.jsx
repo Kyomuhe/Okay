@@ -30,7 +30,7 @@ const Posts = () => {
     }
 
     displayPosts();
-  }, []); // Empty dependency array - runs once on mount
+  }, []); 
 
   if (loading) {
     return (

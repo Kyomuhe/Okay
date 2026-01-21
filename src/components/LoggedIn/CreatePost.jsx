@@ -1,11 +1,61 @@
 import React, { useState } from 'react';
 import { Image, X } from 'lucide-react';
 import Header from './Header';
+import { showToast, makeAuthenticatedRequest } from '../../Utils/util';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePostPage = () => {
+    const [title, setTitle] = useState('');
     const [postText, setPostText] = useState('');
     const [selectedImage, setSelectedImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
+    const [base64, setBase64] = useState('');
+    const navigate = useNavigate();
+
+    //calling the create post api
+    const createPost = async () => {
+        try {
+            const data = {
+                title: title.trim(),
+                body: postText.trim(),
+                coverImage:base64
+
+            };
+            console.log("data being sent:", data)
+            const response = await makeAuthenticatedRequest('create', 'Posts', data);
+            if(response?.returnCode !== 0){
+                console.error(response?.returnMessage);
+                showToast(response?.returnMessage, 'error');
+                return;
+            }
+            showToast('published successfully', 'success');
+            setTitle('');
+            setPostText('');
+            setSelectedImage(null);
+            setBase64('');
+            setImagePreview(null);
+
+            navigate('/main');
+
+
+        } catch (error) {
+            console.log(error)
+            showToast(error.message, 'error');
+        }
+    }
+    // const changeBase64 = () => {
+    //     let file = document.querySelector(
+    //         'input[type=file]')['files'][0];
+    //     let reader = new FileReader();
+    //     reader.onload = function () {
+    //         base64String = reader.result.replace("data:", "")
+    //             .replace(/^.+,/, "");
+    //         imageBase64Stringsep = base64String;
+    //         setBase64(imageBase64Stringsep);
+    //     }
+    //     reader.readAsDataURL(file);
+
+    // }
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -14,6 +64,9 @@ const CreatePostPage = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);
+               const base64String = reader.result.replace("data:", "")
+                    .replace(/^.+,/, "");
+                setBase64(base64String);
             };
             reader.readAsDataURL(file);
         }
@@ -24,12 +77,12 @@ const CreatePostPage = () => {
         setImagePreview(null);
     };
 
-    const handleSubmit = () => {
-        console.log('Post created:', { text: postText, image: selectedImage });
-        setPostText('');
-        setSelectedImage(null);
-        setImagePreview(null);
-    };
+    // const handleSubmit = () => {
+    //     console.log('Post created:', { text: postText, image: selectedImage });
+    //     setPostText('');
+    //     setSelectedImage(null);
+    //     setImagePreview(null);
+    // };
 
     return (
         <div className="min-h-screen bg-gray-50 ">
@@ -44,13 +97,24 @@ const CreatePostPage = () => {
                 </div>
 
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-                    <div className="flex items-center mb-6 pb-6 border-b border-gray-100">
+                    <div className="flex items-center mb-6 ">
                         <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-lg">
                             U
                         </div>
                         <div className="ml-3">
                             <h3 className="font-medium text-gray-900">userName</h3>
                         </div>
+                    </div>
+                    <div className='mb-3'>
+                        <input
+                            type='text'
+                            id='title'
+                            placeholder='Enter title'
+                            className='w-full p-4 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none placeholder-gray-400'
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+
+                        />
                     </div>
 
                     <div className="mb-4">
@@ -98,11 +162,11 @@ const CreatePostPage = () => {
                         </div>
 
                         <button
-                            onClick={handleSubmit}
+                            onClick={createPost}
                             disabled={!postText.trim() && !selectedImage}
                             className={`px-6 py-2 rounded-lg font-medium transition-colors ${postText.trim() || selectedImage
-                                    ? 'bg-blue-500 hover:bg-blue-600 text-white'
-                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                 }`}
                         >
                             Publish Post
